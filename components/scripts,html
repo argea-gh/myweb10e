@@ -1,0 +1,35 @@
+<!-- FLOATING BUTTONS -->
+<a href="https://wa.me/6282241900467?text=Halo%20Herbaprima%2C%20saya%20mau%20konsultasi%20gratis%20tentang%20produk%20herbal." target="_blank" class="whatsapp-float">
+  <i class="fab fa-whatsapp"></i>
+</a>
+<a id="scrollToTop" href="#hero">
+  <i class="fas fa-arrow-up"></i>
+</a>
+
+<!-- MODAL & CART PANEL -->
+<div class="modal" id="productModal">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="modalClose2">Tutup</button>
+    </div>
+  </div>
+</div>
+
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h3>Keranjang Saya</h3>
+    <button class="cart-close" id="cartClose">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="cart-total">Total: <span id="cartTotal">Rp0</span></div>
+    <a href="https://wa.me/6282241900467" target="_blank" class="btn btn-primary" id="checkoutBtn">Lanjut ke WhatsApp</a>
+  </div>
+</div>
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<!-- SCRIPTS -->
+<script src="assets/js/products.js"></script>
+<script src="assets/js/main.js"></script>
