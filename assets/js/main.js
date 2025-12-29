@@ -394,32 +394,3 @@ function animateOnScroll() {
 // Jalankan saat load & scroll
 window.addEventListener('load', animateOnScroll);
 window.addEventListener('scroll', animateOnScroll);
-
-// ──────────────────────────────────────────
-// INISIALISASI HEADER (mobile menu, dll)
-// ──────────────────────────────────────────
-
-function initHeader() {
-  const hamburger = document.getElementById('hamburger');
-  const navMenu = document.getElementById('navMenu');
-  
-  if (!hamburger || !navMenu) return;
-
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-  });
-
-  // Tutup menu saat klik link
-  document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      navMenu.classList.remove('active');
-    });
-  });
-}
-
-// Ekspor untuk digunakan di luar
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { initHeader };
-}
