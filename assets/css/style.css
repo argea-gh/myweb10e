@@ -1132,6 +1132,15 @@ body {
   .hero { padding: 40px 0; }
 }
 
+@media (max-width: 480px) {
+.btn-whatsapp {
+    margin: auto;
+    border: outset;
+    width: fit-content;
+  }
+}
+
+
 /* ────────── Update Multipage ────────────── */
 /* HEADER UPDATE: Nama "Herbaprima" setelah logo */
 /* ────────────────────────────────────────── */
