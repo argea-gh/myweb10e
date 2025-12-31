@@ -101,11 +101,12 @@ body {
 }
 
 .btn-whatsapp {
+  margin: auto;
   border: outside;
   width:fit-content;
   color: var(--white);
   background-color: #25d366;
-  padding: 10px 20px;
+  padding: 5px 15px;
   border-radius: 30px;
   font-weight: 600;
   text-decoration: none;
