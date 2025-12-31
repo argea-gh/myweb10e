@@ -21,68 +21,25 @@ const checkoutBtn = document.getElementById('checkoutBtn');
 // Mobile Navigation Toggle
 // ──────────────────────────────────────────
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  navMenu.classList.toggle('active');
-});
+function initHeader() {
+  if (!hamburger || !navMenu) return;
 
-// Close mobile menu when clicking nav link
-document.querySelectorAll('.nav-menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
-  });
-});
-
-// ──────────────────────────────────────────
-// Render Products Grid
-// ──────────────────────────────────────────
-
-function renderProducts(category = 'all') {
-  productsGrid.innerHTML = '';
-  const filtered = category === 'all' 
-    ? products 
-    : products.filter(p => p.category === category);
-
-  filtered.forEach(product => {
-    const priceFormatted = `Rp${product.price.toLocaleString('id-ID')}`;
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.innerHTML = `
-      <img src="${product.image}" alt="${product.name}" data-id="${product.id}" />
-      <div class="card-body">
-        <span class="category">${product.category}</span>
-        <h4>${product.name}</h4>
-        <div class="price">${priceFormatted}</div>
-        <button class="btn btn-outline btn-add" data-id="${product.id}">Pilih Produk</button>
-      </div>
-    `;
-    productsGrid.appendChild(card);
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
   });
 
-  // Add event listeners to "Pilih Produk" buttons
-  document.querySelectorAll('.btn-add').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const id = e.target.dataset.id;
-      const product = products.find(p => p.id === id);
-      if (product) openProductModal(product);
-    });
-  });
-
-  // Add click listeners to images (also open modal)
-  document.querySelectorAll('.product-card img').forEach(img => {
-    img.addEventListener('click', (e) => {
-      const id = e.target.dataset.id;
-      const product = products.find(p => p.id === id);
-      if (product) openProductModal(product);
+  // Close mobile menu when clicking nav link
+  document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navMenu.classList.remove('active');
     });
   });
 }
 
-// Initial render
-// ───────────── edit multipage ─────────────
-// GLOBAL FUNCTION: renderProducts(category)
-// Bisa dipakai di index.html & produk.html
+// ──────────────────────────────────────────
+// Render Products Grid
 // ──────────────────────────────────────────
 
 function renderProducts(category = 'all') {
@@ -101,7 +58,7 @@ function renderProducts(category = 'all') {
   filtered.forEach(product => {
     const priceFormatted = `Rp${product.price.toLocaleString('id-ID')}`;
     const card = document.createElement('div');
-    card.className = 'product-card';
+    card.className = 'product-card stagger-item slide-up';
     card.innerHTML = `
       <img src="${product.image}" alt="${product.name}" data-id="${product.id}" onError="this.src='https://via.placeholder.com/260x180?text=No+Image'" />
       <div class="card-body">
@@ -170,32 +127,38 @@ function openProductModal(product) {
   `;
 
   productModal.style.display = 'block';
+  setTimeout(() => {
+    productModal.classList.add('active');
+  }, 10);
 
   // Add to cart from modal
   document.getElementById('addToCartBtn')?.addEventListener('click', () => {
     addToCart(product);
-    productModal.style.display = 'none';
+    closeModal();
   });
 }
 
-modalClose.addEventListener('click', () => {
-  productModal.style.display = 'none';
-});
-modalClose2.addEventListener('click', () => {
-  productModal.style.display = 'none';
-});
+function closeModal() {
+  productModal.classList.remove('active');
+  setTimeout(() => {
+    productModal.style.display = 'none';
+  }, 300);
+}
+
+modalClose.addEventListener('click', closeModal);
+modalClose2.addEventListener('click', closeModal);
 
 // Close modal on ESC
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && productModal.style.display === 'block') {
-    productModal.style.display = 'none';
+    closeModal();
   }
 });
 
 // Close modal on outside click
 window.addEventListener('click', (e) => {
   if (e.target === productModal) {
-    productModal.style.display = 'none';
+    closeModal();
   }
 });
 
@@ -281,10 +244,10 @@ function updateCartDisplay(cart) {
   }
 }
 
-// Initial cart load
-loadCart();
+// ──────────────────────────────────────────
+// Cart Panel Toggles
+// ──────────────────────────────────────────
 
-// Cart panel toggles
 function showCartPanel() {
   cartPanel.classList.add('active');
   cartOverlay.style.display = 'block';
@@ -326,13 +289,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         behavior: 'smooth'
       });
       // Close mobile menu if open
-      hamburger.classList.remove('active');
-      navMenu.classList.remove('active');
+      if (hamburger) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      }
     }
   });
 });
 
-// ─────────── Tambahan edit -───────────────
+// ──────────────────────────────────────────
 // SCROLL TO TOP BUTTON
 // ──────────────────────────────────────────
 
@@ -362,28 +327,17 @@ scrollToTopBtn.addEventListener('click', (e) => {
 });
 
 // ──────────────────────────────────────────
-// COMMON INIT (jalankan di semua halaman)
-// ──────────────────────────────────────────
-
-// Load cart dari localStorage di semua halaman
-if (typeof loadCart === 'function') {
-  loadCart();
-}
-
-// WhatsApp floating tetap ada di semua halaman
-// (sudah di HTML, jadi tidak perlu tambahan)
-
-
-// ──────────────────────────────────────────
-// ANIMASI ENTRANCE ON SCROLL
+// ANIMASI ENTRANCE ON SCROLL (Robust)
 // ──────────────────────────────────────────
 
 function animateOnScroll() {
   const elements = document.querySelectorAll('.fade-in, .slide-up, .slide-left, .slide-right');
   
   elements.forEach(el => {
-    const elementTop = el.getBoundingClientRect().top;
-    const isVisible = elementTop < window.innerHeight - 100;
+    if (el.classList.contains('visible')) return; // hindari ulang
+    
+    const rect = el.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
     
     if (isVisible) {
       el.classList.add('visible');
@@ -391,6 +345,17 @@ function animateOnScroll() {
   });
 }
 
-// Jalankan saat load & scroll
-window.addEventListener('load', animateOnScroll);
-window.addEventListener('scroll', animateOnScroll);
+// Jalankan saat SEMUA aset selesai (termasuk gambar)
+window.addEventListener('load', () => {
+  animateOnScroll();
+  window.addEventListener('scroll', animateOnScroll);
+});
+
+// ──────────────────────────────────────────
+// COMMON INIT (jalankan di semua halaman)
+// ──────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', () => {
+  initHeader();
+  loadCart();
+});
