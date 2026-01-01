@@ -780,7 +780,7 @@ body {
 /* ────────────────────────────────────────── */
 /* MODAL RESPONSIF — FULL MOBILE SUPPORT */
 /* ────────────────────────────────────────── */
-
+/* ─
 .modal {
   display: none;
   position: fixed;
@@ -848,6 +848,7 @@ body {
 }
 
 /* MOBILE-FIRST: Stack layout di mobile */
+/* ─
 .product-modal-header {
   display: flex;
   flex-direction: column;
@@ -894,11 +895,11 @@ body {
   margin-bottom: 10px;
   line-height: 1.6;
 }
-
+*/
 /* ────────────────────────────────────────── */
 /* MODAL FOOTER BUTTONS — RATA TENGAH */
 /* ────────────────────────────────────────── */
-
+/*
 .modal-body .btn-group {
   display: flex;
   flex-direction: column;
@@ -906,7 +907,7 @@ body {
   margin-top: 30px;
   text-align: center;
 }
-
+/* 
 .modal-body .btn-group .btn {
   width: 100%;
   max-width: 300px;
@@ -916,10 +917,10 @@ body {
   padding: 14px 20px;
   font-size: 1rem;
 }
-
+*/
 
 /* Tablet & Up: dua tombol sejajar */
-
+/*
 @media (min-width: 768px) {
   .modal-body .btn-group {
     flex-direction: row;
@@ -932,8 +933,9 @@ body {
     display: inline-block;
   }
 }
+*/
 
-/* asli
+/* asli */
 .modal-footer {
   padding: 0 24px 24px;
   display: flex;
@@ -947,7 +949,7 @@ body {
 }
 
 /* TABLET & UP: Grid layout */
-/*
+
 @media (min-width: 768px) {
   .modal-content {
     margin: 40px auto;
@@ -980,7 +982,7 @@ body {
     width: auto;
   }
 }
-*/
+
 /* -- end of asli */
 
 
