@@ -898,7 +898,7 @@ body {
 /* ────────────────────────────────────────── */
 /* MODAL FOOTER BUTTONS — RATA TENGAH */
 /* ────────────────────────────────────────── */
-
+/*
 .modal-body .btn-group {
   display: flex;
   flex-direction: column;
@@ -916,8 +916,10 @@ body {
   padding: 14px 20px;
   font-size: 1rem;
 }
+*/
 
 /* Tablet & Up: dua tombol sejajar */
+/*
 @media (min-width: 768px) {
   .modal-body .btn-group {
     flex-direction: row;
@@ -930,9 +932,9 @@ body {
     display: inline-block;
   }
 }
+*/
 
-
-/* asli
+/* asli */
 .modal-footer {
   padding: 0 24px 24px;
   display: flex;
@@ -945,7 +947,7 @@ body {
   border:none;
 }
 
-/* TABLET & UP: Grid layout 
+/* TABLET & UP: Grid layout */
 @media (min-width: 768px) {
   .modal-content {
     margin: 40px auto;
@@ -978,7 +980,7 @@ body {
     width: auto;
   }
 }
- -- end of asli */
+/* -- end of asli */
 
 
 /* SAFETY MARGIN UNTUK MOBILE (hindari tertutup navbar/keyboard) */
