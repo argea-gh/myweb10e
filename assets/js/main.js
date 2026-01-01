@@ -114,32 +114,18 @@ function openProductModal(product) {
         <p>${product.composition}</p>
       </div>
     </div>
+    
+    <div style="text-align:center; margin-top:30px;">
+      <button class="btn btn-primary" id="addToCartBtn" data-id="${product.id}">
+        ➕ Tambah ke Keranjang
+      </button>
+      <button class="btn btn-whatsapp" style="margin-left:12px;" 
+              onclick="window.open('https://wa.me/6282241900467?text=Saya%20mau%20pesan%20${encodeURIComponent(product.name)}%2C%20harga%20${priceFormatted}.', '_blank')">
+        📲 Langsung ke WhatsApp
+      </button>
+    </div>
+  `;
 
-    // Ganti ini:
-    // <div style="text-align:center; margin-top:30px;">
-      // <button class="btn btn-primary" id="addToCartBtn" data-id="${product.id}">
-        // ➕ Tambah ke Keranjang
-      // </button>
-      // <button class="btn btn-whatsapp" style="margin-left:12px;" 
-              // onclick="window.open('https://wa.me/6282241900467?text=Saya%20mau%20pesan%20${encodeURIComponent(product.name)}%2C%20harga%20${priceFormatted}.', '_blank')">
-        // 📲 Langsung ke WhatsApp
-      // </button>
-   // </div>
- //`;
-
-  // Ganti dengan ini:
-`<div class="btn-group">
-  <button class="btn btn-primary" id="addToCartBtn" data-id="${product.id}">
-    ➕ Tambah ke Keranjang
-  </button>
-  <a href="https://wa.me/6282241900467?text=Saya%20mau%20pesan%20${encodeURIComponent(product.name)}%2C%20harga%20${priceFormatted}." 
-     target="_blank" class="btn btn-whatsapp">
-    📲 Langsung ke WhatsApp
-  </a>
-</div>
-;
- // sampai di sini
- 
   productModal.style.display = 'block';
   setTimeout(() => {
     productModal.classList.add('active');
