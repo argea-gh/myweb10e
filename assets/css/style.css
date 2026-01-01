@@ -101,13 +101,11 @@ body {
 }
 
 .btn-whatsapp {
-  margin: auto;
-  border: outside;
   width:fit-content;
   color: var(--white);
   background-color: #25d366;
-  padding: 5px 15px;
-  border-radius: 30px;
+  padding: 10px 20px;
+  border-radius: 8px;
   font-weight: 600;
   text-decoration: none;
   display: flex;
@@ -480,67 +478,6 @@ body {
   margin-top: 12px;
 }
 
-/* ────────────────────────────────────────── */
-/* EDUKASI GRID */
-/* ────────────────────────────────────────── */
-/* ──
-.edukasi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
- }
- .edukasi-card {
-   background: white;
-   border-radius: 16px;
-   padding: 30px;
-   box-shadow: var(--shadow);
-   transition: var(--transition);
-  }
-  .edukasi-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  }
-
-/* ────── Tambahan edit ─────── */
-/* ──
-.edukasi-img {
-  /* width: 100%;
-  max-width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 16px 16px 0 0;
-  box-sizing: border-box; 
-}
-
-.edukasi-content {
-  padding: 20px;
-}
-
-.edukasi-category {
-  display: inline-block;
-  padding: 4px 12px;
-  background-color: var(--light);
-  color: var(--primary);
-  font-size: 0.8rem;
-  font-weight: 600;
-  border-radius: 20px;
-  margin-bottom: 12px;
-}
-
-.edukasi-title {
-  font-size: 1.4rem;
-  margin-bottom: 12px;
-  color: var(--green-dark);
-}
-
-.edukasi-excerpt {
-  color: var(--gray);
-  margin-bottom: 16px;
-}
-
-/* ───── End Tambahan edit ───── */
-
 /* ===== BLOG EDUKASI ===== */
 .blog-grid {
   display: grid;
@@ -780,7 +717,7 @@ body {
 /* ────────────────────────────────────────── */
 /* MODAL RESPONSIF — FULL MOBILE SUPPORT */
 /* ────────────────────────────────────────── */
-/* ─
+
 .modal {
   display: none;
   position: fixed;
@@ -791,7 +728,7 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   animation: fadeIn 0.3s ease;
-  padding: 0 16px;
+  padding: 0 16px; /* margin horizontal di mobile */
 }
 
 @keyframes fadeIn {
@@ -809,14 +746,6 @@ body {
   overflow-y: auto;
   position: relative;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.modal.active .modal-content {
-  opacity: 1;
-  transform: scale(1);
 }
 
 .modal-close {
@@ -848,7 +777,6 @@ body {
 }
 
 /* MOBILE-FIRST: Stack layout di mobile */
-/* ─
 .product-modal-header {
   display: flex;
   flex-direction: column;
@@ -880,11 +808,6 @@ body {
   margin: 12px 0;
 }
 
-.modal-info p {
-  margin: 12px 0;
-  line-height: 1.7;
-}
-
 .modal-info ul {
   text-align: left;
   padding-left: 20px;
@@ -895,47 +818,7 @@ body {
   margin-bottom: 10px;
   line-height: 1.6;
 }
-*/
-/* ────────────────────────────────────────── */
-/* MODAL FOOTER BUTTONS — RATA TENGAH */
-/* ────────────────────────────────────────── */
-/*
-.modal-body .btn-group {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 30px;
-  text-align: center;
-}
-/* 
-.modal-body .btn-group .btn {
-  width: 100%;
-  max-width: 300px;
-  margin: 0 auto;
-  display: block;
-  text-align: center;
-  padding: 14px 20px;
-  font-size: 1rem;
-}
-*/
 
-/* Tablet & Up: dua tombol sejajar */
-/*
-@media (min-width: 768px) {
-  .modal-body .btn-group {
-    flex-direction: row;
-    justify-content: center;
-    gap: 16px;
-  }
-  .modal-body .btn-group .btn {
-    width: auto;
-    max-width: none;
-    display: inline-block;
-  }
-}
-*/
-
-/* asli */
 .modal-footer {
   padding: 0 24px 24px;
   display: flex;
@@ -944,12 +827,10 @@ body {
 }
 
 .modal-footer .btn {
-  width: fit-content;
-  border:none;
+  width: 100%;
 }
 
 /* TABLET & UP: Grid layout */
-
 @media (min-width: 768px) {
   .modal-content {
     margin: 40px auto;
@@ -983,9 +864,6 @@ body {
   }
 }
 
-/* -- end of asli */
-
-
 /* SAFETY MARGIN UNTUK MOBILE (hindari tertutup navbar/keyboard) */
 @media (max-height: 600px) {
   .modal {
@@ -996,6 +874,18 @@ body {
     margin: 10px auto;
     max-height: 85vh;
   }
+}
+
+/* ANIMASI MASUK MODAL */
+.modal-content {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal.active .modal-content {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .btn-secondary {
@@ -1166,7 +1056,7 @@ body {
   .whatsapp-float {
     width: 50px;
     height: 50px;
-    font-size: 30px;
+    font-size: 24px;
     text-decoration: none;
   }
 }
@@ -1176,15 +1066,6 @@ body {
   .section-title { font-size: 1.6rem; }
   .hero { padding: 40px 0; }
 }
-
-@media (max-width: 480px) {
-.btn-whatsapp {
-    margin: auto;
-    border: outset;
-    width: fit-content;
-  }
-}
-
 
 /* ────────── Update Multipage ────────────── */
 /* HEADER UPDATE: Nama "Herbaprima" setelah logo */
